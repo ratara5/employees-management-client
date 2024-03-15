@@ -7,16 +7,18 @@ function EmployeeCard({ employee }) {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h2>{employee.nombre}</h2>
-      <p>{employee.fecha_ingreso}</p>
-      <p>{employee.salario}</p>
-      <button onClick={() => deleteEmployee(employee.id_empleado)}>
-        Delete
-      </button>
-      <button onClick={() => navigate(`/edit/${employee.id_empleado}`)}>
-        Edit
-      </button>
+    <div className="bg-slate-300 rounded-md p-4">
+      <h2 className="text-sm font-bold">{employee.nombre}</h2>
+      <p className="text-xs">{employee.fecha_ingreso}</p>
+      <p className="text-xs">${employee.salario}</p>
+      <div className="flex gap-x-1">
+        <button className="bg-red-500 px-2 py-1 text-white" onClick={() => deleteEmployee(employee.id_empleado)}>
+          Delete
+        </button>
+        <button className="bg-slate-800 px-2 py-1 text-white" onClick={() => navigate(`/edit/${employee.id_empleado}`)}>
+          Edit
+        </button>
+      </div>
     </div>
   );
 }

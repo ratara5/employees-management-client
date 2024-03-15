@@ -39,8 +39,8 @@ const EmployeesForm = () => {
 
   return (
     <div>
-      <h1 className="text-4xl text-white font-bold text-center">
-        {params.id ? "Editar Empleado" : "Crear Empleado"}
+      <h1 className="text-2xl text-white font-bold text-center">
+        {params.id_empleado ? "Edit Employee" : "Create Employee"}
       </h1>
       <Formik
         initialValues={
@@ -93,7 +93,7 @@ const EmployeesForm = () => {
             <input
               type="text"
               name="nombre"
-              placeholder="Escriba nombre"
+              placeholder="Write nombre"
               onChange={handleChange}
               value={values.nombre}
               className="px-2  py-1 rounded-sm w-full"
@@ -127,7 +127,7 @@ const EmployeesForm = () => {
             <input
               type="number"
               name="salario"
-              placeholder="Escriba salario"
+              placeholder="Write salario"
               onChange={handleChange}
               value={values.salario}
               className="px-2  py-1 rounded-sm w-full"

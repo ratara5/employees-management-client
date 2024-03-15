@@ -1,23 +1,23 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import EmployeeCard from "../components/EmployeeCard";
-import { useEmployees } from "../context/EmployeeContext";
+import ApplicationCard from "../components/ApplicationCard";
+import { useApplications } from "../context/ApplicationContext";
 
-function EmployeesPage() {
-  const { employees, loadEmployees } = useEmployees();
+function ApplicationsPage() {
+  const { applications, loadApplications } = useApplications();
 
   useEffect(() => {
-    loadEmployees();
+    loadApplications();
   }, []);
   
   
   const [q, setQ] = useState("");
-  const [searchParam] = useState(["nombre", "fecha_ingreso", "salario"]); // keys for search in
+  const [searchParam] = useState(["codigo"]); // keys for search in
 
   function renderMain() {
-    if (employees.length === 0) return <h1>No Employees yet</h1>;
-    return search(employees).map((employee) => (
-      <EmployeeCard employee={employee} key={employee.id_empleado} />
+    if (applications.length === 0) return <h1>No Applications yet</h1>;
+    return search(applications).map((application) => (
+      <ApplicationCard application={application} key={application.id_solicitud} />
     ));
   }
 
@@ -36,7 +36,7 @@ function EmployeesPage() {
   
   return (
     <div className="wrapper">
-      <h1 className='text-2xl text-white font-bold text-center'>Employees</h1>
+      <h1 className='text-2xl text-white font-bold text-center'>Applications</h1>
       <div className="search-wrapper m-auto gap-x-4 text-center my-2">
           <label htmlFor="search-form">
               <input
@@ -44,13 +44,12 @@ function EmployeesPage() {
                   name="search-form"
                   id="search-form"
                   className="search-input mx-auto px-2  py-1 rounded-sm"
-                  placeholder="Search for nombre or salario"
+                  placeholder="Search for código"
                   value={q}
                   //set our param useState each time user write in input
                   onChange={(e) => setQ(e.target.value)} 
               />
           </label>
-          <p className="text-white"></p> 
       </div>
       <div>
         <div className="grid grid-cols-4 gap-2">
@@ -61,4 +60,4 @@ function EmployeesPage() {
   );
 }
 
-export default EmployeesPage;
+export default ApplicationsPage;
